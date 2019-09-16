@@ -23,6 +23,8 @@ const Login = props => {
     axios
       .post('http://localhost:8000/api/login', user)
       .then(res => {
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('password', user.password);
         localStorage.setItem('message', res.data.message);
         props.history.push('/users');
       })
