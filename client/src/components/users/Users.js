@@ -9,8 +9,8 @@ const Users = props => {
       axios
         .get('http://localhost:8000/api/users', {
           headers: {
-            username: 'Kevin',
-            password: 'Tou',
+            username: localStorage.getItem('username'),
+            password: localStorage.getItem('password'),
           },
         })
         .then(res => {
@@ -22,15 +22,17 @@ const Users = props => {
   return (
     <div style={{ padding: '6rem' }}>
       <h1>Users</h1>
-      {users &&
-        users.map(user => {
-          return (
-            <div key={user.id}>
-              <p>ID: {user.id}</p>
-              <p>{user.username}</p>
-            </div>
-          );
-        })}
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {users &&
+          users.map(user => {
+            return (
+              <div key={user.id} style={{ width: '200px' }}>
+                <p>ID: {user.id}</p>
+                <p>{user.username}</p>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
