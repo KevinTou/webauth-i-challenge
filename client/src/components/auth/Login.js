@@ -21,7 +21,7 @@ const Login = props => {
     event.preventDefault();
 
     axios
-      .post('http://localhost:8000/api/login', user)
+      .post('http://localhost:8000/api/login', user, { withCredentials: true })
       .then(res => {
         localStorage.setItem('username', user.username);
         localStorage.setItem('password', user.password);

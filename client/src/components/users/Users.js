@@ -12,6 +12,7 @@ const Users = props => {
             username: localStorage.getItem('username'),
             password: localStorage.getItem('password'),
           },
+          withCredentials: true,
         })
         .then(res => {
           setUsers(res.data);
